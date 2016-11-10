@@ -3,7 +3,8 @@
 // @namespace   org.noisu
 // @description Code embedding script for imageboards
 // @include     http://dobrochan.com/*/res/*
-// @version     1
+// @include     https://2ch.hk/*/res/*
+// @version     1.1
 // @grant       none
 // ==/UserScript==
 
@@ -36,14 +37,18 @@ var CodeEmbedding = {
 	},
 
 	replaceLinks: function() {
-		var links = document.querySelectorAll(".message a");
+		if (document.location.href.match(/https?:\/\/dobrochan/))
+			var links = document.querySelectorAll(".message a");
+		else
+			var links = document.querySelectorAll(
+				".post-message a");
 
 		for (var i = 0, len = links.length; i < len; ++i) {
 			var embed_url = this._matchUrl(links[i].href);
 			if (!embed_url)
 				continue;
 			var frame = document.createElement("iframe");
-			frame.style.minWidth = "60em";
+			frame.style.minWidth = "70em";
 			frame.style.minHeight = "40em";
 			frame.src = embed_url;
 			links[i].parentNode.insertBefore(frame, links[i]);
