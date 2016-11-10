@@ -1,5 +1,5 @@
 # CodeEmbedding
-A userscript that adds inline code listings from pastebein and ideone to
+A userscript that adds inline code listings from pastebin and ideone to
 russian imageboards `2ch` and `dobrochan`
 ##Installation
 1. Install browser specific add-on e.g. Greasemonkey
