@@ -43,10 +43,15 @@ var CodeEmbedding = {
 			if (!embed_url)
 				continue;
 			var frame = document.createElement("iframe");
-			frame.style.minWidth = "60em";
-			frame.style.minHeight = "40em";
+			frame.style.width = "100%"
+			frame.style.height = "100%";
 			frame.src = embed_url;
-			links[i].parentNode.insertBefore(frame, links[i]);
+			var wrap = document.createElement("div");
+			wrap.style.minWidth = "60em"
+			wrap.style.resize = "both";
+			wrap.style.overflow = "hidden";
+			wrap.appendChild(frame);
+			links[i].parentNode.insertBefore(wrap, links[i]);
 			var br = document.createElement("br");
 			links[i].parentNode.insertBefore(br, links[i]);
 		}
