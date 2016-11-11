@@ -39,21 +39,28 @@ var CodeEmbedding = {
 		var links = document.querySelectorAll(".message a");
 
 		for (var i = 0, len = links.length; i < len; ++i) {
+			if (links[i].classList.contains("expanded"))
+				continue;
+
 			var embed_url = this._matchUrl(links[i].href);
 			if (!embed_url)
 				continue;
+
 			var frame = document.createElement("iframe");
 			frame.style.width = "100%"
 			frame.style.height = "100%";
 			frame.src = embed_url;
+
 			var wrap = document.createElement("div");
 			wrap.style.minWidth = "60em"
 			wrap.style.resize = "both";
 			wrap.style.overflow = "hidden";
 			wrap.appendChild(frame);
+
 			links[i].parentNode.insertBefore(wrap, links[i]);
 			var br = document.createElement("br");
 			links[i].parentNode.insertBefore(br, links[i]);
+			links[i].classList.add("expanded");
 		}
 	},
 
