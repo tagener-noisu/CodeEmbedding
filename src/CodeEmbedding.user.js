@@ -57,6 +57,15 @@ var Services = [
 	},
 	{
 		safe: true,
+		selector: 'a[href*="//jsfiddle.net"]',
+		embedURL: function(plain_url) {
+			if (plain_url.match(/\/[A-Za-z0-9]+\/?$/))
+				return plain_url + 'embedded/';
+			return null;
+		}
+	},
+	{
+		safe: true,
 		selector: 'a[href*="//transfer.sh"]',
 		embedURL: function(plain_url) {
 			if(plain_url.match(/\.sh\/[A-Za-z0-9]+\/.+$/))

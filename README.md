@@ -10,6 +10,7 @@ russian imageboards `dobrochan` and `2ch`
 support https protocol_
 * [ideone](https://ideone.com)
 * [ghostbin](https://ghostbin.com)
+* [jsfiddle](https://jsfiddle.net)
 * [transfer.sh](https://transfer.sh) _File hosting_
 
 ##Posting
