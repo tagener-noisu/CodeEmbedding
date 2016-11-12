@@ -4,7 +4,7 @@
 // @description Code embedding script for imageboards
 // @include     http://dobrochan.com/*/res/*
 // @include     https://2ch.hk/*/res/*
-// @version     1.1
+// @version     1.3
 // @grant       none
 // @updateURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.meta.js
 // @downloadURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.user.js
@@ -46,6 +46,24 @@ var Services = [
 			return "https://ideone.com/embed/" + m[1];
 		}
 	},
+	{
+		safe: true,
+		selector: 'a[href^="https://ghostbin.com"]',
+		embedURL: function(plain_url) {
+			if (plain_url.match(/paste\/[A-Za-z0-9]+$/))
+				return plain_url;
+			return null;
+		}
+	},
+	{
+		safe: true,
+		selector: 'a[href^="https://transfer.sh"]',
+		embedURL: function(plain_url) {
+			var m = plain_url.match(/\.sh\/[A-Za-z0-9]+\/.+$/);
+			if (!m) return null;
+			return plain_url;
+		}
+	}
 ];
 
 var CodeEmbedding = {
