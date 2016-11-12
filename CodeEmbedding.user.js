@@ -3,6 +3,7 @@
 // @namespace   org.noisu
 // @description Code embedding script for imageboards
 // @include     http://dobrochan.com/*/res/*
+// @include     https://2ch.hk/*/res/*
 // @version     1.1
 // @grant       none
 // @updateURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.meta.js
@@ -28,6 +29,7 @@
 
 var Services = [
 	{
+		safe: false, // safe if uses https protocol
 		selector: 'a[href^="http://pastebin.com"]',
 		embedURL: function(plain_url) {
 			var m = plain_url.match(/\.com\/([A-Za-z0-9]+)$/);
@@ -36,6 +38,7 @@ var Services = [
 		}
 	},
 	{
+		safe: true,
 		selector: 'a[href^="https://ideone.com"]',
 		embedURL: function(plain_url) {
 			var m = plain_url.match(/\.com\/([A-Za-z0-9]+)$/);
@@ -46,7 +49,12 @@ var Services = [
 ];
 
 var CodeEmbedding = {
+	isSafePage: false, // current page is safe if uses https protocol
+
 	init: function() {
+		if (document.location.href.match(/^https:/))
+			this.isSafePage = true;
+
 		this.replaceLinks();
 		var obs = new MutationObserver(function (unused) {
 			CodeEmbedding.replaceLinks();
@@ -58,6 +66,9 @@ var CodeEmbedding = {
 
 	replaceLinks: function() {
 		for (var i = 0, len = Services.length; i < len; ++i) {
+			if (this.isSafePage && !Services[i].safe)
+				continue;
+
 			var links = document.querySelectorAll(
 				Services[i].selector +':not(.expanded)');
 			this._replace(links, i);
