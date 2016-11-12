@@ -26,6 +26,25 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+var Services = [
+	{
+		selector: 'a[href^="http://pastebin.com"]',
+		embedURL: function(plain_url) {
+			var m = plain_url.match(/\.com\/([A-Za-z0-9]+)$/);
+			if (!m) return null;
+			return "http://pastebin.com/embed_iframe/" + m[1];
+		}
+	},
+	{
+		selector: 'a[href^="https://ideone.com"]',
+		embedURL: function(plain_url) {
+			var m = plain_url.match(/\.com\/([A-Za-z0-9]+)$/);
+			if (!m) return null;
+			return "https://ideone.com/embed/" + m[1];
+		}
+	},
+];
+
 var CodeEmbedding = {
 	init: function() {
 		this.replaceLinks();
@@ -38,23 +57,28 @@ var CodeEmbedding = {
 	},
 
 	replaceLinks: function() {
-		var links = document.querySelectorAll(".message a");
+		for (var i = 0, len = Services.length; i < len; ++i) {
+			var links = document.querySelectorAll(
+				Services[i].selector +':not(.expanded)');
+			this._replace(links, i);
+		}
+	},
 
+	_replace: function(links, service_id) {
 		for (var i = 0, len = links.length; i < len; ++i) {
-			if (links[i].classList.contains("expanded"))
-				continue;
-
-			var embed_url = this._matchUrl(links[i].href);
+			var embed_url = Services[service_id].
+				embedURL(links[i].href);
 			if (!embed_url)
 				continue;
 
 			var frame = document.createElement("iframe");
 			frame.style.width = "100%"
 			frame.style.height = "100%";
+			frame.style.border = "dotted 1px";
 			frame.src = embed_url;
 
 			var wrap = document.createElement("div");
-			wrap.style.minWidth = "60em"
+			wrap.style.minWidth = "60em";
 			wrap.style.resize = "both";
 			wrap.style.overflow = "hidden";
 			wrap.appendChild(frame);
@@ -65,22 +89,6 @@ var CodeEmbedding = {
 			links[i].classList.add("expanded");
 		}
 	},
-
-	_matchUrl: function(url) {
-		var mdata = url.match(
-			/(https?:\/\/)(pastebin.com|ideone.com)\/(.+)$/);
-
-		if (!mdata) return null;
-		mdata.shift();
-
-		if (mdata[1] == "pastebin.com")
-			return mdata[0] + mdata[1] +
-				"/embed_iframe/" + mdata[2];
-
-		if (mdata[1] == "ideone.com")
-			return mdata[0] + mdata[1] +
-				"/embed/" + mdata[2];
-	}
 }
 
 document.addEventListener('DOMContentLoaded', CodeEmbedding.init());
