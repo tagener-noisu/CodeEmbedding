@@ -39,7 +39,7 @@ var Services = [
 	},
 	{
 		safe: true,
-		selector: 'a[href^="https://ideone.com"]',
+		selector: 'a[href*="//ideone.com"]',
 		embedURL: function(plain_url) {
 			var m = plain_url.match(/\.com\/([A-Za-z0-9]+)$/);
 			if (!m) return null;
@@ -48,7 +48,7 @@ var Services = [
 	},
 	{
 		safe: true,
-		selector: 'a[href^="https://ghostbin.com"]',
+		selector: 'a[href*="//ghostbin.com"]',
 		embedURL: function(plain_url) {
 			if (plain_url.match(/paste\/[A-Za-z0-9]+$/))
 				return plain_url;
@@ -57,11 +57,11 @@ var Services = [
 	},
 	{
 		safe: true,
-		selector: 'a[href^="https://transfer.sh"]',
+		selector: 'a[href*="//transfer.sh"]',
 		embedURL: function(plain_url) {
-			var m = plain_url.match(/\.sh\/[A-Za-z0-9]+\/.+$/);
-			if (!m) return null;
-			return plain_url;
+			if(plain_url.match(/\.sh\/[A-Za-z0-9]+\/.+$/))
+				return plain_url;
+			return null;
 		}
 	}
 ];
