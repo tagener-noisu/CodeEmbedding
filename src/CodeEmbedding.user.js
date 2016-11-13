@@ -72,7 +72,16 @@ var Services = [
 				return plain_url;
 			return null;
 		}
-	}
+	},
+	{
+		safe: true,
+		selector: 'a[href*="//repl.it"]',
+		embedURL: function(plain_url) {
+			var m = plain_url.match(/\.it\/([A-Za-z0-9]+\/\d)$/);
+			if (!m) return null;
+			return "https://repl.it/embed/" + m[1];
+		}
+	},
 ];
 
 var CodeEmbedding = {
