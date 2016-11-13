@@ -11,7 +11,8 @@ support https protocol_
 * [ideone](https://ideone.com)
 * [ghostbin](https://ghostbin.com)
 * [jsfiddle](https://jsfiddle.net)
-* [transfer.sh](https://transfer.sh) _File hosting_
+* [repl.it](https://repl.it)
+* [transfer.sh](https://transfer.sh)
 
 ##Posting
 Just post some ulrs from sites listed above e.g. `http://pastebin.com/yOurID42`
