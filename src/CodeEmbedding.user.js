@@ -104,7 +104,7 @@ var CodeEmbedding = {
 				continue;
 
 			var links = document.querySelectorAll(
-				Services[i].selector +':not(.expanded)');
+				Services[i].selector + ':not(.expanded)');
 			this._replace(links, i);
 		}
 	},
