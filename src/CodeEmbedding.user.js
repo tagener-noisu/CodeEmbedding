@@ -10,7 +10,7 @@
 // @downloadURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.user.js
 // ==/UserScript==
 
-// Copyright (C) 2016 tagener-noisu <op4.renegat@gmail.com>
+// Copyright (C) 2016-2017 tagener-noisu <op4.renegat@gmail.com>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
