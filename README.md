@@ -5,7 +5,7 @@ russian imageboards `dobrochan` and `2ch`
 1. Install a browser specific add-on e.g. Greasemonkey
 2. Click [here](src/CodeEmbedding.user.js?raw=true), it should install itself automatically.
 
-##Sites supported
+##Supported sites
 * [pastebin](http://pastebin.com) _It works only on unsafe pages, since it doesn't
 support https protocol_
 * [ideone](https://ideone.com)
