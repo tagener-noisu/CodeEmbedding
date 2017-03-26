@@ -4,7 +4,7 @@
 // @description Code embedding script for imageboards
 // @include     http://dobrochan.com/*/res/*
 // @include     https://2ch.hk/*/res/*
-// @version     1.3.1
+// @version     1.3.2
 // @grant       none
 // @updateURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.meta.js
 // @downloadURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.user.js
@@ -27,12 +27,12 @@
 
 var Services = [
     {
-        safe: false, // safe if uses https protocol
-        selector: 'a[href^="http://pastebin.com"]',
+        safe: true, // safe if uses https protocol
+        selector: 'a[href*="//pastebin.com"]',
         embedURL: function(plain_url) {
             var m = plain_url.match(/\.com\/([A-Za-z0-9]+)$/);
             if (!m) return null;
-            return "http://pastebin.com/embed_iframe/" + m[1];
+            return "https://pastebin.com/embed_iframe/" + m[1];
         }
     },
     {
