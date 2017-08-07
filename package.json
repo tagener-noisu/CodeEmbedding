@@ -4,7 +4,8 @@
   "scripts": {
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
-    "watch": "bsb -make-world -w"
+    "watch": "bsb -make-world -w",
+    "release": "webpack && release"
   },
   "keywords": [
     "BuckleScript"
@@ -14,7 +15,6 @@
   "devDependencies": {
     "bs-platform": "^3.0.0",
     "webpack": "^4.6.0",
-    "webpack-cli": "^2.1.2",
-    "webpack-sources": "^1.1.0"
+    "webpack-cli": "^2.1.2"
   }
 }
