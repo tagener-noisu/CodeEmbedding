@@ -1,30 +1,3 @@
-// ==UserScript==
-// @name        CodeEmbedding
-// @namespace   org.noisu
-// @description Code embedding script for imageboards
-// @include     http://dobrochan.com/*/res/*
-// @include     https://2ch.hk/*/res/*
-// @version     1.3.2
-// @grant       none
-// @updateURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.meta.js
-// @downloadURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.user.js
-// ==/UserScript==
-
-// Copyright (C) 2016-2017 tagener-noisu <op4.renegat@gmail.com>
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 var Services = [
 	{
 		safe: true, // safe if uses https protocol
