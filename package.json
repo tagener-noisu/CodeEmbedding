@@ -5,7 +5,8 @@
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
     "watch": "bsb -make-world -w",
-    "release": "webpack && release"
+    "release": "webpack && release",
+    "test": "jest"
   },
   "keywords": [
     "BuckleScript"
@@ -14,7 +15,11 @@
   "license": "GPLv3",
   "devDependencies": {
     "bs-platform": "^3.0.0",
+    "jest": "^22.4.3",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.1.2"
+  },
+  "jest": {
+    "testRegex": "_(spec|test)."
   }
 }
