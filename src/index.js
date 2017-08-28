@@ -1,53 +1,5 @@
-var Services = [
-	{
-		selector: 'a[href*="//pastebin.com"]',
-		embedURL: function(plain_url) {
-			var m = plain_url.match(/\.com\/([A-Za-z0-9]+)$/);
-			if (!m) return null;
-			return "https://pastebin.com/embed_iframe/" + m[1];
-		}
-	},
-	{
-		selector: 'a[href*="//ideone.com"]',
-		embedURL: function(plain_url) {
-			var m = plain_url.match(/\.com\/([A-Za-z0-9]+)$/);
-			if (!m) return null;
-			return "https://ideone.com/embed/" + m[1];
-		}
-	},
-	{
-		selector: 'a[href*="//ghostbin.com"]',
-		embedURL: function(plain_url) {
-			if (plain_url.match(/paste\/[A-Za-z0-9]+$/))
-				return plain_url;
-			return null;
-		}
-	},
-	{
-		selector: 'a[href*="//jsfiddle.net"]',
-		embedURL: function(plain_url) {
-			if (plain_url.match(/\/[A-Za-z0-9]+\/?$/))
-				return plain_url + 'embedded/';
-			return null;
-		}
-	},
-	{
-		selector: 'a[href*="//transfer.sh"]',
-		embedURL: function(plain_url) {
-			if(plain_url.match(/\.sh\/[A-Za-z0-9]+\/.+$/))
-				return plain_url;
-			return null;
-		}
-	},
-	{
-		selector: 'a[href*="//repl.it"]',
-		embedURL: function(plain_url) {
-			var m = plain_url.match(/\.it\/([A-Za-z0-9]+\/\d)$/);
-			if (!m) return null;
-			return "https://repl.it/embed/" + m[1];
-		}
-	},
-];
+var Services = require("./services.bs.js")
+var services = Services.services
 
 var CodeEmbedding = {
 	init: function() {
@@ -61,17 +13,17 @@ var CodeEmbedding = {
 	},
 
 	replaceLinks: function() {
-		for (var i = 0, len = Services.length; i < len; ++i) {
+		for (var i = 0, len = services.length; i < len; ++i) {
 			var links = document.querySelectorAll(
-				Services[i].selector + ':not(.expanded)');
+				services[i].selector + ':not(.expanded)');
 			this._replace(links, i);
 		}
 	},
 
 	_replace: function(links, service_id) {
 		for (var i = 0, len = links.length; i < len; ++i) {
-			var embed_url = Services[service_id].
-				embedURL(links[i].href);
+			var embed_url = services[service_id].
+				embed_url(links[i].href);
 			if (!embed_url)
 				continue;
 

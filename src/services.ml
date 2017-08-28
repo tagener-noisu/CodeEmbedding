@@ -8,3 +8,6 @@ let pastebin = createService
 			| Some([|_;id|]) -> "//pastebin.com/embed_iframe/" ^ id
 			| _ -> raise UrlMatchFailure
 	)
+
+
+let services = [|pastebin|]
