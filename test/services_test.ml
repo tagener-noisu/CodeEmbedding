@@ -8,3 +8,11 @@ describe "pastebin" (fun _ ->
 	it "should return correct url for embedding"
 		(fun _ -> expect result toBe url);
 ());
+
+describe "ideone" (fun _ ->
+	let result = Services.ideone
+		|. embed_url "https://ideone.com/LeeT" in
+	let url = "//ideone.com/embed/LeeT" in
+	it "should return correct url for embedding"
+		(fun _ -> expect result toBe url);
+());
