@@ -16,3 +16,11 @@ describe "ideone" (fun _ ->
 	it "should return correct url for embedding"
 		(fun _ -> expect result toBe url);
 ());
+
+describe "repl.it" (fun _ ->
+	let result = Services.replit
+		|. embed_url "https://repl.it/Leet1337" in
+	let url = "//repl.it/embed/Leet1337" in
+	it "should return correct url for embedding"
+		(fun _ -> expect result toBe url);
+());
