@@ -18,4 +18,13 @@ let ideone = createService
 			| _ -> raise UrlMatchFailure
 	)
 
-let services = [|pastebin|]
+let replit = createService
+	~selector: {j|a[href*="//repl.it"]|j}
+	~embed_url: (
+			fun url ->
+			match url |. regex [%bs.re "/\.it\/([A-Za-z0-9]+)$/"] with
+			| Some([|_;id|]) -> "//repl.it/embed/" ^ id
+			| _ -> raise UrlMatchFailure
+	)
+
+let services = [|pastebin; ideone; replit|]
