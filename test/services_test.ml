@@ -24,3 +24,11 @@ describe "repl.it" (fun _ ->
 	it "should return correct url for embedding"
 		(fun _ -> expect result toBe url);
 ());
+
+describe "codepen.io" (fun _ ->
+	let result = Services.codepen
+		|. embed_url "https://codepen.io/User/pen/Leet1337" in
+	let url = "//codepen.io/User/embed/Leet1337" in
+	it "should return correct url for embedding"
+		(fun _ -> expect result toBe url);
+());
