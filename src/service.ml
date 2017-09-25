@@ -1,6 +1,3 @@
-external regex : string -> Js.Re.t -> string array option =
-	"match" [@@bs.send][@@bs.return nullable]
-
 type service
 external createService :
 	selector:string ->
