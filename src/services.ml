@@ -1,3 +1,4 @@
+open String;;
 open Service;;
 
 let pastebin = createService
@@ -27,4 +28,13 @@ let replit = createService
 			| _ -> raise UrlMatchFailure
 	)
 
-let services = [|pastebin; ideone; replit|]
+let codepen = createService
+	~selector: {j|a[href*="//codepen.io"]|j}
+	~embed_url: (
+			fun url ->
+				url
+				|. replace [%bs.re "/\/pen\//"] "/embed/"
+				|. replace [%bs.re "/^https?:/"] ""
+	)
+
+let services = [|pastebin; ideone; replit; codepen|]
