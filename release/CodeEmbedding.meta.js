@@ -4,7 +4,7 @@
 // @description Code embedding script for imageboards
 // @include     http://dobrochan.com/*/res/*
 // @include     https://2ch.hk/*/res/*
-// @version     1.3.5
+// @version     1.3.6
 // @grant       none
 // @updateURL   https://github.com/tagener-noisu/CodeEmbedding/raw/master/release/CodeEmbedding.meta.js
 // @downloadURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/release/CodeEmbedding.user.js

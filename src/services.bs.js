@@ -18,8 +18,53 @@ var pastebin = {
     })
 };
 
-var services = /* array */[pastebin];
+var ideone = {
+  selector: "a[href*=\"//ideone.com\"]",
+  embed_url: (function (url) {
+      var match = url.match((/\.com\/([A-Za-z]+)$/));
+      if (match == null) {
+        throw Service.UrlMatchFailure;
+      } else if (match.length !== 2) {
+        throw Service.UrlMatchFailure;
+      } else {
+        var id = match[1];
+        return "//ideone.com/embed/" + id;
+      }
+    })
+};
+
+var replit = {
+  selector: "a[href*=\"//repl.it\"]",
+  embed_url: (function (url) {
+      var match = url.match((/\.it\/([A-Za-z0-9]+)$/));
+      if (match == null) {
+        throw Service.UrlMatchFailure;
+      } else if (match.length !== 2) {
+        throw Service.UrlMatchFailure;
+      } else {
+        var id = match[1];
+        return "//repl.it/embed/" + id;
+      }
+    })
+};
+
+var codepen = {
+  selector: "a[href*=\"//codepen.io\"]",
+  embed_url: (function (url) {
+      return url.replace((/\/pen\//), "/embed/").replace((/^https?:/), "");
+    })
+};
+
+var services = /* array */[
+  pastebin,
+  ideone,
+  replit,
+  codepen
+];
 
 exports.pastebin = pastebin;
+exports.ideone = ideone;
+exports.replit = replit;
+exports.codepen = codepen;
 exports.services = services;
 /* No side effect */
