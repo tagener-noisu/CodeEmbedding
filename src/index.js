@@ -22,8 +22,11 @@ var CodeEmbedding = {
 
 	_replace: function(links, service_id) {
 		for (var i = 0, len = links.length; i < len; ++i) {
-			var embed_url = services[service_id].
-				embed_url(links[i].href);
+			try {
+				var embed_url = services[service_id].embed_url(links[i].href);
+			}
+			catch(e) { continue; }
+
 			if (!embed_url)
 				continue;
 
