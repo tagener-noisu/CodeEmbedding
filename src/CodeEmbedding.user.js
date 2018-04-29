@@ -4,7 +4,7 @@
 // @description Code embedding script for imageboards
 // @include     http://dobrochan.com/*/res/*
 // @include     https://2ch.hk/*/res/*
-// @version     1.3.2
+// @version     1.3.3
 // @grant       none
 // @updateURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.meta.js
 // @downloadURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.user.js
@@ -138,5 +138,6 @@ var CodeEmbedding = {
 	},
 }
 
-document.addEventListener('DOMContentLoaded', CodeEmbedding.init());
+document.addEventListener('DOMContentLoaded',
+	CodeEmbedding.init.bind(CodeEmbedding));
 // vim:ts=4:sw=0:et:
