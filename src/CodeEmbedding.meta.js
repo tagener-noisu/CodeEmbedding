@@ -3,6 +3,7 @@
 // @namespace   org.noisu
 // @description Code embedding script for imageboards
 // @include     http://dobrochan.com/*/res/*
+// @include     https://2ch.hk/*/res/*
 // @version     1.3.3
 // @grant       none
 // @updateURL https://github.com/tagener-noisu/CodeEmbedding/raw/master/CodeEmbedding.meta.js
