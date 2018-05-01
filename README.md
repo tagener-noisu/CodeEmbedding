@@ -1,6 +1,6 @@
 # CodeEmbedding
-A userscript that adds inline embedding from paste-hosting like sites for the
-russian imageboards `dobrochan` and `2ch`
+A userscript that converts pastebin-like urls to iframes with their content.
+Works on following imageboards: `2ch`, `dobrochan`
 ## Installation
 1. Install a browser specific add-on e.g. Greasemonkey
 2. Click [here](src/CodeEmbedding.user.js?raw=true), it should install itself automatically.

@@ -111,5 +111,6 @@ var CodeEmbedding = {
 	},
 }
 
-document.addEventListener('DOMContentLoaded', CodeEmbedding.init());
+document.addEventListener('DOMContentLoaded',
+	CodeEmbedding.init.bind(CodeEmbedding));
 // vim:ts=4:sw=0:et:
